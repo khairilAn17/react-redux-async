@@ -2,11 +2,18 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 type TUiState ={
-    cartInvisible: boolean
+    cartInvisible: boolean,
+    notification: {
+        status: string;
+        title: string;
+        message: string;
+
+    } | null;
 }
 
 const uiInitiateState: TUiState = {
-    cartInvisible: false
+    cartInvisible: false,
+    notification: null
 }
 
 const uiSlice = createSlice({
@@ -15,6 +22,9 @@ const uiSlice = createSlice({
     reducers: {
         toggle: (state) => {
             state.cartInvisible = !state.cartInvisible
+        },
+        showNotification: (state, action) => {
+            state.notification = { status: action.payload.status, title: action.payload.title, message: action.payload.message}
         }
     }
 })
