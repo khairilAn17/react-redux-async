@@ -24,7 +24,7 @@ const Products = () => {
       <ul>
         {
           DUMMY_PRODUCS.map(item => {
-            return <ProductItem id={item.id} title={item.title} price={item.price} description={item.description}/> 
+            return <ProductItem key={item.id} id={item.id} title={item.title} price={item.price} description={item.description}/> 
           })
         }
       </ul>
