@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
 
-
 type TItem = {
     id: string,
     price: number,
@@ -9,7 +8,7 @@ type TItem = {
     name: string,
 }
 
-type TCartState = {
+export type TCartState = {
     items: TItem[],
     totalQuantity: number,
     totalAmount: number
@@ -24,6 +23,10 @@ const cartSlice = createSlice({
     name: 'cart',
     initialState: cartInitialState,
     reducers: {
+        replaceCart: (state, action) => {
+            state.totalQuantity = action.payload.totalQuantity;
+            state.items = action.payload.items;
+        },
         addItemToCart: (state, action) => {
             const newItem = action.payload;
             const existingItem = state.items.find(item => item.id === newItem.id);
